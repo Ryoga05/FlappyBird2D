@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameStarted && Input.GetKeyDown(KeyCode.X))
+        if (!gameStarted && (Input.GetKeyDown(KeyCode.X) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)))
         {
             gameStarted = true;
             startMenu.SetActive(false);
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             highscoreText.text = "";
         }
 
-        if (gameOver && Input.GetKeyDown(KeyCode.X))
+        if (gameOver && (Input.GetKeyDown(KeyCode.X) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

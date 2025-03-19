@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Detectar cuando se presiona la barra espaciadora
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
             // Aplicar una fuerza hacia arriba
             rb.velocity = Vector2.up * jumpForce;
